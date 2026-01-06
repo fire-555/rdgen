@@ -369,24 +369,24 @@ jobs:
         shell: bash
         run: |
           mv ./res/icon.ico ./res/icon.ico.bak
-          mv ./res/icon.png ./res/icon.png.bak
+#          mv ./res/icon.png ./res/icon.png.bak
           mv ./res/tray-icon.ico ./res/tray-icon.ico.bak
 
       - name: magick stuff
         if: ${{ inputs.iconlink != 'false' }}
         continue-on-error: true
         run: |
-          Invoke-WebRequest -Uri ${{ fromJson(inputs.iconlink).url }}/get_png?filename=${{ fromJson(inputs.iconlink).file }}"&"uuid=${{ fromJson(inputs.iconlink).uuid }} -OutFile ./res/icon.png 
+#          Invoke-WebRequest -Uri ${{ fromJson(inputs.iconlink).url }}/get_png?filename=${{ fromJson(inputs.iconlink).file }}"&"uuid=${{ fromJson(inputs.iconlink).uuid }} -OutFile ./res/icon.png 
           Invoke-WebRequest -Uri https://posactive.com.au/pa_rd.ico -OutFile ./res/icon.ico
-          mv ./res/32x32.png ./res/32x32.png.bak
-          mv ./res/64x64.png ./res/64x64.png.bak
-          mv ./res/128x128.png ./res/128x128.png.bak
-          mv ./res/128x128@2x.png ./res/128x128@2x.png.bak
+#          mv ./res/32x32.png ./res/32x32.png.bak
+#          mv ./res/64x64.png ./res/64x64.png.bak
+#          mv ./res/128x128.png ./res/128x128.png.bak
+#          mv ./res/128x128@2x.png ./res/128x128@2x.png.bak
           cp ./res/icon.ico ./res/tray-icon.ico
-          magick ./res/icon.png -resize 32x32 ./res/32x32.png
-          magick ./res/icon.png -resize 64x64 ./res/64x64.png
-          magick ./res/icon.png -resize 128x128 ./res/128x128.png
-          magick ./res/128x128.png -resize 200% ./res/128x128@2x.png
+#          magick ./res/icon.png -resize 32x32 ./res/32x32.png
+#          magick ./res/icon.png -resize 64x64 ./res/64x64.png
+#          magick ./res/icon.png -resize 128x128 ./res/128x128.png
+#          magick ./res/128x128.png -resize 200% ./res/128x128@2x.png
 
 
       - name: ui.rs icon
@@ -510,8 +510,8 @@ jobs:
         if: ${{ inputs.iconlink != 'false' }}
         continue-on-error: true
         run: |
-          mv ./rustdesk/data/flutter_assets/assets/icon.svg ./rustdesk/data/flutter_assets/assets/icon.svg.bak
-          magick ./res/icon.png ./rustdesk/data/flutter_assets/assets/icon.svg
+#          mv ./rustdesk/data/flutter_assets/assets/icon.svg ./rustdesk/data/flutter_assets/assets/icon.svg.bak
+#          magick ./res/icon.png ./rustdesk/data/flutter_assets/assets/icon.svg
 
       - name: logo stuff
         if: ${{ inputs.logolink != 'false' }}
